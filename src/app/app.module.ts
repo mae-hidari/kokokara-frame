@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { NZ_I18N } from 'ng-zorro-antd/i18n';
-import { ja_JP } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import ja from '@angular/common/locales/ja';
 import { FormsModule } from '@angular/forms';
@@ -26,7 +24,7 @@ registerLocaleData(ja);
     CoreModule,
     SharedModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: ja_JP }],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
