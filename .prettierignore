@@ -1,0 +1,9 @@
+# Add files here to ignore them from prettier formatting
+
+/dist
+/coverage
+package.json
+yarn.lock
+.husky/
+.lintstagedrc.json
+.prettierignore
