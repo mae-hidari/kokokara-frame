@@ -8,4 +8,4 @@ yarn.lock
 .lintstagedrc.json
 .prettierignore
 .gitignore
- .eslintrc.json
+.eslintrc.json
