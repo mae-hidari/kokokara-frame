@@ -68,5 +68,10 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "akitaCli": {
+    "customFolderName": "false",
+    "template": "angular",
+    "basePath": "./src/app"
   }
 }
