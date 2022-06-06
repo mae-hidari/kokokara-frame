@@ -1,14 +1,14 @@
 <nz-layout class="h-full">
-  <nz-header class="bg-white">
+  <nz-header class="border-b bg-white">
     <div>
       <a class="logo">logo</a>
     </div>
   </nz-header>
-  <nz-layout class="bg-white">
-    <nz-sider nzTheme="light" class="h-full">
+  <nz-layout>
+    <nz-sider nzTheme="light" class="h-full pt-6">
       <app-side-menu></app-side-menu>
     </nz-sider>
-    <nz-layout class="h-full pt-8 pl-8">
+    <nz-layout class="h-full bg-gray-100 py-6 px-6">
       <nz-content>
         <router-outlet></router-outlet>
       </nz-content>

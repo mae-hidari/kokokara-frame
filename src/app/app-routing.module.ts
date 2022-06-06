@@ -8,6 +8,20 @@ const routes: Routes = [
     loadChildren: () =>
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
+  {
+    path: 'event-management',
+    loadChildren: () =>
+      import('./event-management/event-management.module').then(
+        (m) => m.EventManagementModule,
+      ),
+  },
+  {
+    path: 'expense-management',
+    loadChildren: () =>
+      import('./expense-management/expense-management.module').then(
+        (m) => m.ExpenseManagementModule,
+      ),
+  },
 ];
 
 @NgModule({
