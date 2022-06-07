@@ -1,7 +1,11 @@
 <h1 class="pb-5 text-2xl">イベント管理</h1>
 
 <app-content-container>
-  <nz-table #list [nzData]="(list$ | async) || []">
+  <nz-table
+    #list
+    [nzData]="(list$ | async) || []"
+    [nzLoading]="loading$ | async"
+  >
     <thead>
       <tr>
         <th>開催日</th>
@@ -12,9 +16,9 @@
     </thead>
     <tbody>
       <tr *ngFor="let data of list.data">
-        <td>{{ data.eventDate }}</td>
+        <td>{{ data.eventDate | date: 'yyyy年MM月dd日 h:mm' }} ~</td>
         <td>{{ data.name }}</td>
-        <td>{{ data.numberOfParticipants }}</td>
+        <td>{{ data.numberOfParticipants }} / {{ data.capacity }}</td>
         <td>{{ data.address }}</td>
       </tr>
     </tbody>

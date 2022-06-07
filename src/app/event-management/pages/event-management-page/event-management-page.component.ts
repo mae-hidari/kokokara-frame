@@ -14,6 +14,7 @@ export class EventManagementPageComponent implements OnInit {
   ) {}
 
   list$ = this.eventQuery.selectAll();
+  loading$ = this.eventQuery.selectLoading();
 
   ngOnInit(): void {
     this.eventService.getAll().subscribe();

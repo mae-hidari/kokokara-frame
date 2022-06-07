@@ -14,13 +14,16 @@ export class EventService {
   ) {}
 
   getAll() {
+    this.eventStore.setLoading(true);
     return this.eventDataService.getAll().pipe(
-      map((res) => ({ ...res, data: res.data.map(createEvent) })),
+      map((res) => ({ ...res, data: res.data?.map(createEvent) })),
       tap((mappedRes) => {
         if (mappedRes.error) {
           this.eventStore.setError(mappedRes.error);
+        } else {
+          this.eventStore.set(mappedRes.data);
         }
-        this.eventStore.set(mappedRes.data);
+        this.eventStore.setLoading(false);
       }),
     );
   }
