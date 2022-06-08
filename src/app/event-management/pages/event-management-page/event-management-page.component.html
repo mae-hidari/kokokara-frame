@@ -1,4 +1,13 @@
-<h1 class="pb-5 text-2xl">イベント管理</h1>
+<div nz-row nzJustify="space-between">
+  <h1 class="pb-5 text-2xl font-bold">イベント管理</h1>
+  <app-base-button
+    buttonType="primary"
+    iconType="plus-circle"
+    (click)="onClickAdd()"
+  >
+    イベント登録
+  </app-base-button>
+</div>
 
 <app-content-container>
   <nz-table
@@ -8,18 +17,35 @@
   >
     <thead>
       <tr>
-        <th>開催日</th>
+        <th nzWidth="210px">開催日</th>
         <th>イベント名</th>
-        <th>参加人数</th>
+        <th nzWidth="95px">参加人数</th>
         <th>場所</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let data of list.data">
-        <td>{{ data.eventDate | date: 'yyyy年MM月dd日 h:mm' }} ~</td>
-        <td>{{ data.name }}</td>
+        <td>{{ data.startDate | date: 'yyyy年MM月dd日 h:mm' }} ~</td>
+        <td>
+          <ng-container
+            *ngIf="!data.url; else linkEventName; context: { data: this.data }"
+          >
+            {{ data.name }}
+          </ng-container>
+          <ng-template #linkEventName>
+            <a
+              nz-button
+              nzType="link"
+              target="_blank"
+              rel="noopener noreferrer"
+              [href]="data.url"
+              class="p-0"
+              >{{ data.name }}</a
+            >
+          </ng-template>
+        </td>
         <td>{{ data.numberOfParticipants }} / {{ data.capacity }}</td>
-        <td>{{ data.address }}</td>
+        <td>{{ data.location }}</td>
       </tr>
     </tbody>
   </nz-table>

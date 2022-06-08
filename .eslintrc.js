@@ -13,6 +13,7 @@ module.exports = {
   rules: {
     'no-useless-constructor': 'off',
     'import/no-duplicates': 'off',
+    'dot-notation': 'off',
     camelcase: [
       'off',
       {

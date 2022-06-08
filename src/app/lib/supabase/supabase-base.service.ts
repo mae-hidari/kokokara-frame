@@ -13,7 +13,12 @@ export class SupabaseBaseService<T> {
     this.resource = resource;
   }
 
-  find(filters: FindFilter[], select = '*', range = [0, 10], orders: FindOrder[] = []): Observable<ApiResponse<T[]>> {
+  find(
+    filters: FindFilter[],
+    select = '*',
+    range = [0, 10],
+    orders: FindOrder[] = [],
+  ): Observable<ApiResponse<T[]>> {
     const query = this.client.table(this.resource).select(select);
 
     filters.forEach(([column, op, value]) => {
@@ -28,7 +33,28 @@ export class SupabaseBaseService<T> {
 
     return from(query).pipe(
       map((res) => {
-        return { data: res.data, error: res.error, status: res.status } as ApiResponse<T[]>;
+        return {
+          data: res.data,
+          error: res.error,
+          status: res.status,
+        } as ApiResponse<T[]>;
+      }),
+    );
+  }
+
+  create(model: Partial<T>): Observable<ApiResponse<T>> {
+    const query = this.client
+      .table(this.resource)
+      .insert({ ...model })
+      .single();
+
+    return from(query).pipe(
+      map((res) => {
+        return {
+          data: res.data,
+          error: res.error,
+          status: res.status,
+        } as ApiResponse<T>;
       }),
     );
   }
