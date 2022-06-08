@@ -17,7 +17,9 @@ module.exports = {
   ],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
-  importOrderParserPlugins: ['typescript', 'classProperties', '["decorators", { "decoratorsBeforeExport": true }]'],
-  parser: 'typescript',
-  printWidth: 140,
+  importOrderParserPlugins: [
+    'typescript',
+    'classProperties',
+    '["decorators", { "decoratorsBeforeExport": true }]',
+  ],
 };

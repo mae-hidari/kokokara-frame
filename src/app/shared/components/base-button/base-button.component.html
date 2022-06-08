@@ -1,0 +1,19 @@
+<button nz-button [nzType]="buttonType || 'primary'" class="rounded-sm">
+  <ng-container *ngIf="iconType; else noIcon">
+    <div class="flex items-center">
+      <i nz-icon [nzType]="iconType || ''"></i>
+      <span class="pl-2">
+        <ng-container *ngTemplateOutlet="label"></ng-container>
+      </span>
+    </div>
+  </ng-container>
+  <ng-template #noIcon>
+    <span>
+      <ng-container *ngTemplateOutlet="label"></ng-container>
+    </span>
+  </ng-template>
+</button>
+
+<ng-template #label>
+  <ng-content></ng-content>
+</ng-template>

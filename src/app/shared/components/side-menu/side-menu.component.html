@@ -1,5 +1,14 @@
 <ul nz-menu nzMode="inline">
-  <li nz-menu-item>ダッシュボード</li>
-  <li nz-menu-item>イベント管理</li>
-  <li nz-menu-item>経費管理</li>
+  <li nz-menu-item nzMatchRouter>
+    <i nz-icon nzType="home" nzTheme="outline" class="pr-2"></i>
+    <a routerLink="/dashboard">ダッシュボード</a>
+  </li>
+  <li nz-menu-item nzMatchRouter>
+    <i nz-icon nzType="calendar" nzTheme="outline" class="pr-2"></i>
+    <a routerLink="/event-management">イベント管理</a>
+  </li>
+  <li nz-menu-item nzMatchRouter>
+    <i nz-icon nzType="bank" nzTheme="outline" class="pr-2"></i>
+    <a routerLink="/expense-management">経費管理</a>
+  </li>
 </ul>

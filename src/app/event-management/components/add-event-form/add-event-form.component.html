@@ -1,0 +1,104 @@
+<div class="flex justify-center">
+  <nz-upload
+    nzAccept=".ics"
+    [nzBeforeUpload]="onUpload"
+    [nzShowUploadList]="false"
+    #nzUpload
+    nzLimit="1"
+  >
+    <app-base-button buttonType="dashed" iconType="upload">
+      icsファイルから読み込む</app-base-button
+    >
+  </nz-upload>
+</div>
+
+<form
+  *ngIf="form"
+  nz-form
+  nzLayout="vertical"
+  class="mt-6 px-6"
+  [formGroup]="form"
+>
+  <nz-form-item>
+    <nz-form-label nzRequired nzFor="name">イベント名</nz-form-label>
+    <nz-form-control [nzErrorTip]="errorTip">
+      <input
+        nz-input
+        formControlName="name"
+        name="name"
+        type="string"
+        id="name"
+      />
+    </nz-form-control>
+  </nz-form-item>
+
+  <div nz-row>
+    <nz-form-item>
+      <nz-form-label nzFor="email">開始日時</nz-form-label>
+      <nz-form-control>
+        <nz-date-picker
+          formControlName="startDate"
+          nzShowTime
+          nzFormat="yyyy-MM-dd HH:mm:ss"
+        ></nz-date-picker>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item class="ml-4">
+      <nz-form-label nzFor="email">終了日時</nz-form-label>
+      <nz-form-control>
+        <nz-date-picker
+          formControlName="endDate"
+          #endDatePicker
+          nzShowTime
+          nzFormat="yyyy-MM-dd HH:mm:ss"
+        ></nz-date-picker>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+
+  <nz-form-item>
+    <nz-form-label nzFor="location">開催場所</nz-form-label>
+    <nz-form-control>
+      <input
+        nz-input
+        formControlName="location"
+        name="location"
+        type="string"
+        id="location"
+      />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzFor="url">URL</nz-form-label>
+    <nz-form-control>
+      <input nz-input formControlName="url" name="url" type="string" id="url" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzRequired nzFor="capacity">募集人数</nz-form-label>
+    <nz-form-control [nzErrorTip]="errorTip">
+      <input
+        nz-input
+        formControlName="capacity"
+        name="capacity"
+        type="number"
+        id="capacity"
+      />
+    </nz-form-control>
+  </nz-form-item>
+</form>
+
+<ng-template #errorTip let-control>
+  <ng-container *ngIf="control.hasError('required')"
+    >必ず入力してください</ng-container
+  >
+  <ng-container *ngIf="control.hasError('maxlength')"
+    >50文字以内で入力してください</ng-container
+  >
+  <ng-container *ngIf="control.hasError('min')"
+    >1以上の数字を入力してください</ng-container
+  >
+</ng-template>

@@ -7,3 +7,5 @@ yarn.lock
 .husky/
 .lintstagedrc.json
 .prettierignore
+.gitignore
+.eslintrc.json
